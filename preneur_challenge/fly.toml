@@ -1,8 +1,0 @@
-app = "preneur-challenge"
-
-[build]
-  builder = "heroku/buildpacks:20"
-  buildpacks = [
-    "https://github.com/michalmuskala/heroku-buildpack-elixir.git",
-    "https://github.com/michalmuskala/heroku-buildpack-erlang.git"
-  ]

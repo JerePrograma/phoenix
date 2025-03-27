@@ -26,8 +26,7 @@ config :preneur_challenge, PreneurChallengeWeb.Endpoint,
 #
 # Se utiliza el adaptador "Local" por defecto para almacenar los correos de forma local.
 # En producción se recomienda cambiar a un adaptador diferente configurado en `config/runtime.exs`.
-config :preneur_challenge, PreneurChallenge.Mailer,
-  adapter: Swoosh.Adapters.Local
+config :preneur_challenge, PreneurChallenge.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configuración de esbuild
 # Esbuild se usa para compilar los assets JavaScript y se requiere especificar la versión.
@@ -64,4 +63,4 @@ config :phoenix, :json_library, Jason
 
 # Importa la configuración específica para cada entorno (dev, test, prod)
 # Este import debe ir al final para que sobreescriba la configuración definida anteriormente.
-import_config "#{config_env()}.exs"
+import_config "#{Mix.env()}.exs"
