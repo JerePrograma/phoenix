@@ -1,0 +1,127 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Estilos personalizados para clonar Threads */
+@layer components {
+  /* Contenedor principal de la aplicación */
+  .threads-container {
+    @apply min-h-screen bg-black text-white;
+  }
+
+  /* Encabezado fijo de la interfaz */
+  .threads-header {
+    @apply sticky top-0 z-10 flex items-center justify-between p-4 bg-black border-b border-gray-800;
+  }
+
+  /* Botones generales (redondeados, transiciones suaves) */
+  .threads-button {
+    @apply rounded-full px-4 py-2 font-medium transition-colors;
+  }
+  /* Botón primario: fondo blanco con texto oscuro */
+  .threads-primary-button {
+    @apply bg-white text-black hover:bg-gray-200;
+  }
+  /* Botón secundario: transparente, con borde y hover oscuro */
+  .threads-secondary-button {
+    @apply bg-transparent text-white border border-gray-700 hover:bg-gray-900;
+  }
+
+  /* Modal: contenedor de overlay con fondo semitransparente */
+  .threads-modal {
+    @apply fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70;
+    /* Se aplica animación de fade in al mostrarse */
+    @apply animate-fadeIn;
+  }
+  /* Contenido del modal: caja centrada, con borde, sombra y bordes redondeados */
+  .threads-modal-content {
+    @apply w-full max-w-lg bg-black border border-gray-800 rounded-xl shadow-xl;
+  }
+  /* Encabezado del modal: separa botones y título */
+  .threads-modal-header {
+    @apply flex items-center justify-between p-4 border-b border-gray-800;
+  }
+
+  /* Área de texto del modal para escribir el post */
+  .threads-textarea {
+    @apply w-full bg-transparent border-0 text-white placeholder-gray-500 resize-none focus:ring-0 focus:outline-none p-4;
+  }
+
+  /* Lista de threads: separa cada post con divisiones */
+  .threads-post-list {
+    @apply divide-y divide-gray-800;
+  }
+  /* Cada post individual con padding y efecto hover */
+  .threads-post {
+    @apply p-4 hover:bg-gray-900/50;
+  }
+  /* Avatar: tamaño fijo, redondeado y con objeto de cobertura */
+  .threads-avatar {
+    @apply w-10 h-10 rounded-full object-cover;
+  }
+
+  /* Sidebar: barra lateral fija, con fondo oscuro y espaciado */
+  .threads-sidebar {
+    @apply fixed left-0 top-0 h-full w-16 md:w-20 border-r border-gray-800 bg-black flex flex-col items-center py-6 space-y-8;
+  }
+  /* Íconos del sidebar: redondeados y con transición al hover */
+  .threads-sidebar-icon {
+    @apply p-2 rounded-full hover:bg-gray-800 transition-colors;
+  }
+
+  /* Sección de sugerencias para seguir */
+  .threads-suggestions {
+    @apply mt-4 border-t border-gray-800 pt-4;
+  }
+  .threads-suggestion-item {
+    @apply flex items-center justify-between p-3 hover:bg-gray-900/50 rounded-lg;
+  }
+  .threads-follow-button {
+    @apply px-4 py-1.5 rounded-full border border-gray-700 text-sm font-medium hover:bg-gray-800;
+  }
+
+  /* Estilos específicos para Phoenix LiveView */
+  .phx-no-feedback.invalid-feedback,
+  .phx-no-feedback .invalid-feedback {
+    @apply hidden;
+  }
+  .phx-click-loading {
+    @apply opacity-50 transition-opacity duration-300;
+  }
+  .phx-loading {
+    @apply cursor-wait;
+  }
+
+  /* Estilos para los mensajes flash de Phoenix */
+  .alert {
+    @apply p-4 mb-4 rounded-lg border;
+  }
+  .alert-info {
+    @apply bg-threads-gray-800 border-gray-700 text-white;
+  }
+  .alert-success {
+    @apply bg-green-900/30 border-green-800 text-green-100;
+  }
+  .alert-warning {
+    @apply bg-yellow-900/30 border-yellow-800 text-yellow-100;
+  }
+  .alert-danger {
+    @apply bg-red-900/30 border-red-800 text-red-100;
+  }
+
+  /* Estilos para formularios */
+  .threads-form-group {
+    @apply mb-4;
+  }
+  .threads-label {
+    @apply block text-sm font-medium text-gray-400 mb-1;
+  }
+  .threads-input {
+    @apply w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-1 focus:ring-gray-600 focus:border-gray-600;
+  }
+
+  /* Estilos para botones de acción, como íconos interactivos */
+  .threads-action-icon {
+    @apply text-gray-500 hover:text-white transition-colors;
+  }
+}
