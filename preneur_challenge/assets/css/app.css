@@ -125,3 +125,78 @@
     @apply text-gray-500 hover:text-white transition-colors;
   }
 }
+
+/* Estilos base para todas las imágenes de perfil */
+img.rounded-full {
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+/* Estilos específicos para cada contexto */
+
+/* 1. Imagen en la sección principal (¿Qué novedades tienes?) */
+section.p-4.border-b.border-gray-800 img.rounded-full,
+section.p-4.border-b.border-gray-800 img.avatar-sm {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+}
+
+/* 2. Imágenes en la lista de posts */
+.threads-post-list img.rounded-full,
+.threads-post-list img.avatar-sm,
+.threads-post img.rounded-full,
+.threads-post img.avatar-sm {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+}
+
+/* 3. Imágenes en las sugerencias */
+.threads-suggestions img.rounded-full,
+.threads-suggestions img.avatar-sm,
+.threads-suggestion-item img.rounded-full,
+.threads-suggestion-item img.avatar-sm {
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+}
+
+/* 4. Imagen en el modal de nuevo hilo */
+.threads-modal img.rounded-full,
+.threads-modal img.avatar-sm,
+.threads-modal-content img.rounded-full,
+.threads-modal-content img.avatar-sm {
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+}
+
+/* 5. Imagen en la barra lateral */
+.threads-sidebar img.rounded-full,
+.threads-sidebar img.avatar-sm {
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+}
+
+/* 6. Solución general para cualquier imagen con clase avatar-sm */
+img.avatar-sm {
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  flex-shrink: 0 !important;
+}
+
+/* 7. Para la imagen de perfil principal (si necesitas una más grande) */
+.profile-main img.rounded-full,
+img.profile-main {
+  width: 80px !important;
+  height: 80px !important;
+}
