@@ -2,7 +2,7 @@ import Config
 
 config :preneur_challenge, PreneurChallengeWeb.Endpoint,
   # La URL de la aplicación en producción.
-  url: [host: System.get_env("PHX_HOST") || "example.com", port: 80],
+  url: [host: System.get_env("PHX_HOST") || "jereprograma.com", port: 80],
   # Configuración HTTP: se toma el puerto desde la variable de entorno o se usa 4000 por defecto.
   http: [port: String.to_integer(System.get_env("PORT") || "4000")],
   # La clave secreta se obtiene de la variable de entorno (se debe generar con mix phx.gen.secret)

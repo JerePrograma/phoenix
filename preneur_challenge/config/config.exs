@@ -13,14 +13,15 @@ config :preneur_challenge,
 
 # Configuración del endpoint de la aplicación
 config :preneur_challenge, PreneurChallengeWeb.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "localhost", port: 4000],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
     formats: [html: PreneurChallengeWeb.ErrorHTML, json: PreneurChallengeWeb.ErrorJSON],
     layout: false
   ],
   pubsub_server: PreneurChallenge.PubSub,
-  live_view: [signing_salt: "MxLgOJD9"]
+  live_view: [signing_salt: "MxLgOJD9"],
+  check_origin: ["http://localhost:4000"]
 
 # Configuración del mailer
 #
