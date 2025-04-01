@@ -9,42 +9,71 @@
     transform: translateY(0);
   }
 }
+
 .animate-new-post {
   animation: fadeSlideIn 0.6s ease-out;
 }
 
-/* Estilos existentes (sin cambios) */
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+/* Importación de Tailwind base, components y utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* ============================= */
+/* VARIABLES */
+/* ============================= */
+@layer base {
+  :root {
+    /* Colores y otros valores (modo claro) */
+    --background: 20 50% 97%;
+    --foreground: 20 10% 20%;
+    --primary: 350 70% 73%;
+    --primary-foreground: 210 40% 98%;
+    --border: 20 10% 90%;
+    --radius: 0.75rem;
+
+    /* Espaciado y tipografía */
+    --spacing-4: clamp(1rem, 1rem + 0.3vw, 1.5rem);
+    --text-base: clamp(0.95rem, 0.95rem + 0.2vw, 1.125rem);
+  }
+}
+
+/* ============================= */
+/* COMPONENTES LIVEVIEW */
+/* ============================= */
 @layer components {
   /* Contenedor principal de la aplicación */
   .threads-container {
     @apply min-h-screen bg-black text-white;
   }
 
+  /* Header */
   .threads-header {
     @apply sticky top-0 z-10 flex items-center justify-between p-4 bg-black border-b border-gray-800;
   }
 
+  /* Botones */
   .threads-button {
     @apply rounded-full px-4 py-2 font-medium transition-colors;
   }
+
   .threads-primary-button {
     @apply bg-white text-black hover:bg-gray-200;
   }
+
   .threads-secondary-button {
     @apply bg-transparent text-white border border-gray-700 hover:bg-gray-900;
   }
 
+  /* Modal */
   .threads-modal {
     @apply fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70;
-    @apply animate-fadeIn;
   }
+
   .threads-modal-content {
     @apply w-full max-w-lg bg-black border border-gray-800 rounded-xl shadow-xl;
   }
+
   .threads-modal-header {
     @apply flex items-center justify-between p-4 border-b border-gray-800;
   }
@@ -53,40 +82,47 @@
     @apply w-full bg-transparent border-0 text-white placeholder-gray-500 resize-none focus:ring-0 focus:outline-none p-4;
   }
 
+  /* Lista de posts */
   .threads-post-list {
     @apply divide-y divide-gray-800;
   }
+
   .threads-post {
     @apply p-4 hover:bg-gray-900/50;
   }
-  .threads-avatar {
-    @apply w-10 h-10 rounded-full object-cover;
-  }
 
+  /* Sidebar */
   .threads-sidebar {
     @apply fixed left-0 top-0 h-full w-16 md:w-20 border-r border-gray-800 bg-black flex flex-col items-center py-6 space-y-8;
   }
+
   .threads-sidebar-icon {
     @apply p-2 rounded-full hover:bg-gray-800 transition-colors;
   }
 
+  /* Sugerencias */
   .threads-suggestions {
-    @apply mt-4 border-t border-gray-800 pt-4;
+    @apply mt-4 border-t border-gray-800 pt-4 p-4;
   }
+
   .threads-suggestion-item {
     @apply flex items-center justify-between p-3 hover:bg-gray-900/50 rounded-lg;
   }
+
   .threads-follow-button {
     @apply px-4 py-1.5 rounded-full border border-gray-700 text-sm font-medium hover:bg-gray-800;
   }
 
+  /* Estados de LiveView y mensajes flash */
   .phx-no-feedback.invalid-feedback,
   .phx-no-feedback .invalid-feedback {
     @apply hidden;
   }
+
   .phx-click-loading {
     @apply opacity-50 transition-opacity duration-300;
   }
+
   .phx-loading {
     @apply cursor-wait;
   }
@@ -94,85 +130,49 @@
   .alert {
     @apply p-4 mb-4 rounded-lg border;
   }
+
   .alert-info {
     @apply bg-threads-gray-800 border-gray-700 text-white;
   }
+
   .alert-success {
     @apply bg-green-900/30 border-green-800 text-green-100;
   }
+
   .alert-warning {
     @apply bg-yellow-900/30 border-yellow-800 text-yellow-100;
   }
+
   .alert-danger {
     @apply bg-red-900/30 border-red-800 text-red-100;
   }
 
-  .threads-form-group {
-    @apply mb-4;
-  }
-  .threads-label {
-    @apply block text-sm font-medium text-gray-400 mb-1;
-  }
-  .threads-input {
-    @apply w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-1 focus:ring-gray-600 focus:border-gray-600;
-  }
-
+  /* Íconos de acción */
   .threads-action-icon {
     @apply text-gray-500 hover:text-white transition-colors;
   }
+
+  /* Comentarios */
+  .comment-input {
+    @apply bg-gray-900 border border-gray-700 rounded-full px-3 py-2 text-white focus:outline-none focus:ring-1 focus:ring-gray-600 focus:border-gray-600;
+  }
+
+  /* Botón de like activo */
+  .like-active {
+    @apply text-red-500 hover:text-red-400;
+  }
 }
 
-/* Estilos base para todas las imágenes de perfil */
+/* ============================= */
+/* IMÁGENES Y AVATARES */
+/* ============================= */
 img.rounded-full {
   border-radius: 9999px;
   object-fit: cover;
-}
-
-/* Reglas específicas para tamaños de imagen */
-section.p-4.border-b.border-gray-800 img.rounded-full,
-section.p-4.border-b.border-gray-800 img.avatar-sm {
-  width: 32px !important;
-  height: 32px !important;
-  min-width: 32px !important;
-  min-height: 32px !important;
-}
-
-.threads-post-list img.rounded-full,
-.threads-post-list img.avatar-sm,
-.threads-post img.rounded-full,
-.threads-post img.avatar-sm {
-  width: 32px !important;
-  height: 32px !important;
-  min-width: 32px !important;
-  min-height: 32px !important;
-}
-
-.threads-suggestions img.rounded-full,
-.threads-suggestions img.avatar-sm,
-.threads-suggestion-item img.rounded-full,
-.threads-suggestion-item img.avatar-sm {
-  width: 24px !important;
-  height: 24px !important;
-  min-width: 24px !important;
-  min-height: 24px !important;
-}
-
-.threads-modal img.rounded-full,
-.threads-modal img.avatar-sm,
-.threads-modal-content img.rounded-full,
-.threads-modal-content img.avatar-sm {
-  width: 24px !important;
-  height: 24px !important;
-  min-width: 24px !important;
-  min-height: 24px !important;
-}
-
-.threads-sidebar img.rounded-full,
-.threads-sidebar img.avatar-sm {
-  width: 24px !important;
-  height: 24px !important;
-  min-width: 24px !important;
-  min-height: 24px !important;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
 }
 
 img.avatar-sm {
@@ -180,7 +180,6 @@ img.avatar-sm {
   height: 24px !important;
   min-width: 24px !important;
   min-height: 24px !important;
-  flex-shrink: 0 !important;
 }
 
 .profile-main img.rounded-full,
@@ -189,26 +188,89 @@ img.profile-main {
   height: 80px !important;
 }
 
-/* Ajustes responsivos para pantallas pequeñas */
+/* ============================= */
+/* RESPONSIVIDAD */
+/* ============================= */
 @media (max-width: 640px) {
-  /* Oculta la barra lateral en dispositivos móviles */
+  /* Oculta la sidebar en móviles */
   .threads-sidebar {
     display: none;
   }
-  /* Ajusta el margen principal para ocupar el ancho completo */
+
+  /* Ajusta el main para usar todo el ancho */
   main {
     margin-left: 0 !important;
     padding: 0 1rem;
   }
-  /* Reorganiza el header para mejor visualización en móvil */
+
+  /* Reorganiza el header para una mejor visualización en móvil */
   .threads-header {
     flex-direction: column;
     align-items: flex-start;
   }
-  /* Ajusta el padding de las secciones */
+
+  /* Ajusta los paddings de las secciones y el modal */
   .threads-post-list,
   .threads-suggestions,
   .threads-modal-content {
-    padding: 1rem;
+    padding: clamp(1rem, 1rem + 0.3vw, 1.5rem);
+  }
+
+  /* Ajusta el tamaño del modal en móviles */
+  .threads-modal-content {
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+
+/* ============================= */
+/* UTILIDADES Y EXTRAS (mix-in) */
+/* ============================= */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400;
+}
+
+/* Transiciones suaves */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Animación para los mensajes flash */
+.alert {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación para los botones */
+.threads-button:active {
+  transform: scale(0.95);
+}
+
+/* Animación para el modal */
+.threads-modal {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
