@@ -1,4 +1,4 @@
-defmodule PreneurChallengeWeb.ThreadLive do
+defmodule PreneurChallengeWeb.ThreadModalLive do
   use PreneurChallengeWeb, :live_view
 
   alias PreneurChallenge.Repo
